@@ -93,7 +93,6 @@ public class VendasOnlineApplication implements CommandLineRunner {
 		clienteRepository.saveAll(Arrays.asList(cli1));
 		enderecoRepository.saveAll(Arrays.asList(e1, e2));
 
-		
 	}
 	
 }
