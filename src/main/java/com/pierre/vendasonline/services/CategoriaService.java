@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.pierre.vendasonline.domain.Categoria;
+import com.pierre.vendasonline.dto.CategoriaDTO;
 import com.pierre.vendasonline.repositories.CategoriaRepository;
 import com.pierre.vendasonline.services.exceptions.DataIntegrityException;
 import com.pierre.vendasonline.services.exceptions.ObjectNotFoundException;
@@ -56,6 +57,12 @@ public class CategoriaService {
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
+	}
+	
+	//metodo auxilia que instancia um categoria apartir de um dto
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		
+		return new Categoria(objDto.getId(), objDto.getNome());
 	}
 	
 }
