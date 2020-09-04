@@ -15,10 +15,10 @@ import com.pierre.vendasonline.domain.Cliente;
 import com.pierre.vendasonline.domain.Endereco;
 import com.pierre.vendasonline.domain.enums.TipoCliente;
 import com.pierre.vendasonline.dto.ClienteDTO;
+import com.pierre.vendasonline.dto.ClienteNewDTO;
 import com.pierre.vendasonline.repositories.CidadeRepository;
 import com.pierre.vendasonline.repositories.ClienteRepository;
 import com.pierre.vendasonline.repositories.EnderecoRepository;
-import com.pierre.vendasonline.resource.ClienteNewDTO;
 import com.pierre.vendasonline.services.exceptions.DataIntegrityException;
 import com.pierre.vendasonline.services.exceptions.ObjectNotFoundException;
 

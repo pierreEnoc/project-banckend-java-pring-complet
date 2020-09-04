@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.pierre.vendasonline.domain.Cliente;
 import com.pierre.vendasonline.dto.ClienteDTO;
+import com.pierre.vendasonline.dto.ClienteNewDTO;
 import com.pierre.vendasonline.services.ClienteService;
 
 @RestController
