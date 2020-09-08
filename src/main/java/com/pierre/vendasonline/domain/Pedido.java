@@ -30,7 +30,7 @@ private static final long serialVersionUID = 1L;
     @JsonFormat(pattern = "dd/MM/yyyy/HH:mm")
 	private Date istante;
 	
-	@JsonManagedReference
+	//@JsonManagedReference
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
 	private Pagamento pagamento;
 	

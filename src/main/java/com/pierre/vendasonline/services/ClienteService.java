@@ -17,7 +17,6 @@ import com.pierre.vendasonline.domain.Endereco;
 import com.pierre.vendasonline.domain.enums.TipoCliente;
 import com.pierre.vendasonline.dto.ClienteDTO;
 import com.pierre.vendasonline.dto.ClienteNewDTO;
-import com.pierre.vendasonline.repositories.CidadeRepository;
 import com.pierre.vendasonline.repositories.ClienteRepository;
 import com.pierre.vendasonline.repositories.EnderecoRepository;
 import com.pierre.vendasonline.services.exceptions.DataIntegrityException;
@@ -31,9 +30,6 @@ public class ClienteService {
 	
 	@Autowired
 	private EnderecoRepository enderecoRepository;
-	
-	@Autowired
-	private CidadeRepository cidadeRepository;
 	
 	public Cliente find(Integer id) {
 		Optional<Cliente>  obj = repo.findById(id);
