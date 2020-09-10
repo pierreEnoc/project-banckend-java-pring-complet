@@ -10,10 +10,10 @@ import com.pierre.vendasonline.domain.ItemPedido;
 import com.pierre.vendasonline.domain.PagamentoComBoleto;
 import com.pierre.vendasonline.domain.Pedido;
 import com.pierre.vendasonline.domain.enums.EstadoPagamento;
+import com.pierre.vendasonline.repositories.ClienteRepository;
 import com.pierre.vendasonline.repositories.ItemPedidoRepository;
 import com.pierre.vendasonline.repositories.PagamentoRepository;
 import com.pierre.vendasonline.repositories.PedidoRepository;
-import com.pierre.vendasonline.repositories.ProdutoRepository;
 import com.pierre.vendasonline.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -33,11 +33,12 @@ public class PedidoService {
 	@Autowired
 	private ItemPedidoRepository  itemPedidoRepository;
 	
-	
-
 	@Autowired
 	private ProdutoService  produtoService;
 	
+
+	@Autowired
+	private ClienteService clienteService;
 	
 	public Pedido find(Integer id) {
 		Optional<Pedido>  obj = repo.findById(id);
@@ -48,6 +49,7 @@ public class PedidoService {
 	public Pedido insert(Pedido obj) {
 		obj.setId(null);
 		obj.setIstante(new Date());
+		obj.setCliente(clienteService.find(obj.getCliente().getId()));
 		obj.getPagamento().setEstado(EstadoPagamento.PENDENTE);
 		obj.getPagamento().setPedido(obj);
 		if(obj.getPagamento() instanceof PagamentoComBoleto) {
@@ -60,10 +62,12 @@ public class PedidoService {
 		
 		for(ItemPedido ip: obj.getItens()) {
 			ip.setDesconto(0.0);
-			ip.setPreco(produtoService.find(ip.getProduto().getId()).getPreco());
+			ip.setProduto(produtoService.find(ip.getProduto().getId()));;
+			ip.setPreco(ip.getProduto().getPreco());
 			ip.setPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
+		System.out.println(obj);
 		return obj;
 	}
 	
