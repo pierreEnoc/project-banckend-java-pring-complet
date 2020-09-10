@@ -10,7 +10,6 @@ import com.pierre.vendasonline.domain.ItemPedido;
 import com.pierre.vendasonline.domain.PagamentoComBoleto;
 import com.pierre.vendasonline.domain.Pedido;
 import com.pierre.vendasonline.domain.enums.EstadoPagamento;
-import com.pierre.vendasonline.repositories.ClienteRepository;
 import com.pierre.vendasonline.repositories.ItemPedidoRepository;
 import com.pierre.vendasonline.repositories.PagamentoRepository;
 import com.pierre.vendasonline.repositories.PedidoRepository;
@@ -40,6 +39,10 @@ public class PedidoService {
 	@Autowired
 	private ClienteService clienteService;
 	
+	@org.springframework.beans.factory.annotation.Autowired(required=true)
+	private EmailService emailService;
+
+	
 	public Pedido find(Integer id) {
 		Optional<Pedido>  obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
@@ -66,8 +69,9 @@ public class PedidoService {
 			ip.setPreco(ip.getProduto().getPreco());
 			ip.setPedido(obj);
 		}
+		
 		itemPedidoRepository.saveAll(obj.getItens());
-		System.out.println(obj);
+		emailService.sendOrderConfirmationEmail(obj);
 		return obj;
 	}
 	
