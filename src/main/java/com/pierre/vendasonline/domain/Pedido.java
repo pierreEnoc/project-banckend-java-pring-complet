@@ -30,7 +30,7 @@ private static final long serialVersionUID = 1L;
 	private Integer id;
     
     @JsonFormat(pattern = "dd/MM/yyyy/HH:mm")
-	private Date istante;
+	private Date instante;
 	
 	//@JsonManagedReference
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
@@ -52,10 +52,10 @@ private static final long serialVersionUID = 1L;
 	}
 
 
-	public Pedido(Integer id, Date istante,  Cliente cliente, Endereco enderecoDeEntrega) {
+	public Pedido(Integer id, Date instante,  Cliente cliente, Endereco enderecoDeEntrega) {
 		super();
 		this.id = id;
-		this.istante = istante;
+		this.instante = instante;
 		this.cliente = cliente;
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
@@ -80,13 +80,13 @@ private static final long serialVersionUID = 1L;
 	}
 
 
-	public Date getIstante() {
-		return istante;
+	public Date getInstante() {
+		return instante;
 	}
 
 
-	public void setIstante(Date istante) {
-		this.istante = istante;
+	public void setInstante(Date instante) {
+		this.instante = instante;
 	}
 
 
@@ -170,7 +170,7 @@ private static final long serialVersionUID = 1L;
 		builder.append("Pedido número: ");
 		builder.append(getId());
 		builder.append(", Instante: ");
-		builder.append(sdf.format(getIstante()));
+		builder.append(sdf.format(getInstante()));
 		builder.append(", Cliente: ");
 		builder.append(getCliente().getNome());
 		builder.append(", Situação do pagamento: ");
