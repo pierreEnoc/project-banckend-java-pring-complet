@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Profile;
 
 import com.pierre.vendasonline.services.DBService;
 import com.pierre.vendasonline.services.EmailService;
-import com.pierre.vendasonline.services.MockEmailService;
 import com.pierre.vendasonline.services.SmtpEmailService;
 
 @Configuration
@@ -38,5 +37,5 @@ public class DevConfig {
 	public EmailService emailService() {
 		return new SmtpEmailService();
 	}
-
+	
 }
