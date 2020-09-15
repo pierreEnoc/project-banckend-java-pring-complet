@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.pierre.vendasonline.domain.Cliente;
-import com.pierre.vendasonline.domain.enums.UserSS;
 import com.pierre.vendasonline.repositories.ClienteRepository;
+import com.pierre.vendasonline.security.UserSS;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
