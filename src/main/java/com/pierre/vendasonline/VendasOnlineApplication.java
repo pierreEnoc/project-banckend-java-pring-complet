@@ -10,8 +10,8 @@ import com.pierre.vendasonline.services.S3Service;
 @SpringBootApplication
 public class VendasOnlineApplication implements CommandLineRunner {
 	
-	@Autowired
-	private S3Service s3Service;
+	//@Autowired
+	//private S3Service s3Service;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(VendasOnlineApplication.class, args);
@@ -20,7 +20,7 @@ public class VendasOnlineApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		s3Service.uploadFile("/home/pierre/Documents/meus-projetos/Backend/java/vendas/imagens/avatar-blank.png");
+		//s3Service.uploadFile("/home/pierre/Documents/meus-projetos/Backend/java/vendas/imagens/avatar-blank.png");
 	}	
 	
 }
