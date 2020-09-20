@@ -7,6 +7,7 @@ import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -25,8 +26,7 @@ public abstract class AbstractEmailEmailService implements EmailService {
 	@Autowired
 	private TemplateEngine templateEngine;
 	
-	//@Autowired
-	@Autowired(required = false)
+    @Autowired
 	private JavaMailSender  javaMailSender;
 	
 	@Override
@@ -73,7 +73,6 @@ public abstract class AbstractEmailEmailService implements EmailService {
 		mmh.setText(htmlFromTemplatePedido(obj), true);
 		return mimeMessage;
 	}
-	
 	@Override
 	public void sendNewPasswordEmail(Cliente cliente, String newPass) {
 		SimpleMailMessage sm = prepareNewPasswordEmail(cliente, newPass);
@@ -88,7 +87,7 @@ public abstract class AbstractEmailEmailService implements EmailService {
 		sm.setSentDate(new Date(System.currentTimeMillis()));
 		sm.setText("Nova senha: " + newPass);
 		return sm;
-	  }
+	}
 	}
 	
 

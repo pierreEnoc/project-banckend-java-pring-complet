@@ -14,10 +14,10 @@ public class VendasOnlineApplication implements CommandLineRunner {
 		SpringApplication.run(VendasOnlineApplication.class, args);
 	}
 
+
 	@Override
 	public void run(String... args) throws Exception {
-		
+
 		//s3Service.uploadFile("/home/pierre/Documents/meus-projetos/Backend/java/vendas/imagens/avatar-blank.png");
-	}	
-	
+	}
 }

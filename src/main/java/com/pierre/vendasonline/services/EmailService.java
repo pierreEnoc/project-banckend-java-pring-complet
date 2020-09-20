@@ -6,6 +6,7 @@ import org.springframework.mail.SimpleMailMessage;
 
 import com.pierre.vendasonline.domain.Cliente;
 import com.pierre.vendasonline.domain.Pedido;
+
 public interface EmailService {
 	
 	void sendOrderConfirmationEmail(Pedido obj);
@@ -17,4 +18,5 @@ public interface EmailService {
 	void sendHtmlEmail(MimeMessage msg);
 	
 	void sendNewPasswordEmail(Cliente cliente, String newPass);
+	
 }

@@ -12,18 +12,18 @@ import com.pierre.vendasonline.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class AuthService {
-	
+
 	@Autowired
 	private ClienteRepository clienteRepository;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder pe;
-	
+
 	@Autowired
 	private EmailService emailService;
-	
+
 	private Random rand = new Random();
-	
+
 	public void sendNewPassword(String email) {
 
 		Cliente cliente = clienteRepository.findByEmail(email);
@@ -39,14 +39,13 @@ public class AuthService {
 	}
 
 	private String newPassword() {
-		
 		char[] vet = new char[10];
 		for (int i=0; i<10; i++) {
 			vet[i] = randomChar();
 		}
-		 return new String(vet);
+		return new String(vet);
 	}
-	
+
 	private char randomChar() {
 		int opt = rand.nextInt(3);
 		if (opt == 0) { // gera um digito
