@@ -46,7 +46,8 @@ public class PedidoService {
 	@Autowired
 	private ClienteService clienteService;
 	
-	@org.springframework.beans.factory.annotation.Autowired(required=true)
+	//@org.springframework.beans.factory.annotation.Autowired(required=true)
+	@Autowired
 	private EmailService emailService;
 
 	
